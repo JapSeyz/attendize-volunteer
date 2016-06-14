@@ -1,0 +1,15 @@
+{
+    "name": "Volunteers",
+    "alias": "volunteers",
+    "description": "This allow volunteers to sign up for your app",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Volunteers\\Providers\\VolunteersServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}
