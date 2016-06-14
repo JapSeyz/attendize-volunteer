@@ -12,12 +12,12 @@ class CreateTasksVolunteersTable extends Migration {
      */
     public function up()
     {
-        Schema::create('tasks_users', function(Blueprint $table)
+        Schema::create('task_volunteer', function(Blueprint $table)
         {
             $table->increments('id');
 
             $table->integer('volunteer_id')->unsigned();
-            $table->integer('tasks_id')->unsigned();
+            $table->integer('task_id')->unsigned();
             $table->integer('priority')->default(3);
 
             $table->timestamps();
@@ -31,7 +31,7 @@ class CreateTasksVolunteersTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('tasks_users');
+        Schema::drop('task_volunteer');
     }
 
 }
