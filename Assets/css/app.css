@@ -1,0 +1,24 @@
+.input-group-addon {
+  border: 0 !important;
+  color: #fff !important; }
+
+.input-group-addon + select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+.absolute-right {
+  position: absolute !important;
+  right: 10px !important;
+  color: #aaaaaa !important;
+  z-index: 3;
+  pointer-events: none; }
+
+#event_page_wrap {
+  height: 100%; }
+
+.btn-success {
+  background: #5cb85c !important;
+  border-color: #4cae4c !important; }
+
+/*# sourceMappingURL=app.css.map */

@@ -18,7 +18,7 @@ class CreateVolunteersTable extends Migration
 
             $table->string('name')->index();
             $table->string('password');
-            $table->string('email')->index();
+            $table->string('email')->index()->unique();
             $table->string('phone')->nullable();
             $table->string('mobile')->nullable();
 

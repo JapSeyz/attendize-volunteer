@@ -8,6 +8,7 @@ class VolunteersController extends MyModuleController {
 	public function index()
 	{
 		$volunteers = Volunteer::event($this->event->id)->get();
-		return view('volunteers::Organiser.index');
+
+		return view('volunteers::Organiser.index')->withVolunteers($volunteers);
 	}
 }

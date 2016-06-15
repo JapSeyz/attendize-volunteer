@@ -1,0 +1,18 @@
+.input-group-addon {
+    border: 0 !important;
+    color: #fff !important;
+}
+
+.input-group-addon + select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.absolute-right {
+    position: absolute !important;
+    right: 10px !important;
+    color: #aaaaaa !important;
+    z-index: 3;
+    pointer-events: none;
+}
