@@ -30,6 +30,7 @@ Route::group([
 
     /* Register Form */
     Route::post('register', 'VolunteersController@register');
+    Route::post('login', 'VolunteersController@login');
 
 });
 

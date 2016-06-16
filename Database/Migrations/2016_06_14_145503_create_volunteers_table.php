@@ -37,6 +37,7 @@ class CreateVolunteersTable extends Migration
             $table->integer('rank')->default(1); //Admin-rank
             $table->integer('event_id')->unsigned();
 
+            $table->string('remember_token', 100)->nullable();
             $table->timestamps();
         });
     }

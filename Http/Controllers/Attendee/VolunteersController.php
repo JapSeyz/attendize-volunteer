@@ -1,6 +1,7 @@
 <?php namespace Modules\Volunteers\Http\Controllers\Attendee;
 
 use App\Http\Controllers\MyModuleController;
+use Illuminate\Http\Request;
 use Modules\Volunteers\Http\Requests\RegisterVolunteerRequest;
 use Modules\Volunteers\Models\Task;
 use Modules\Volunteers\Models\Volunteer;
@@ -13,6 +14,18 @@ class VolunteersController extends MyModuleController
     {
         $tasks = Task::get();
         return view('volunteers::Attendee.index')->withTasks($tasks);
+    }
+
+    public function login(Request $request)
+    {
+        $email = $request->email;
+        $password = $request->password;
+
+        if(\Auth::guard('volunteer')->attempt(['email' => $email, 'password' => $password])){
+            dd(auth()->guard('volunteer')->user());
+        }
+
+        dd('not found');
     }
 
     public function register(RegisterVolunteerRequest $request)
