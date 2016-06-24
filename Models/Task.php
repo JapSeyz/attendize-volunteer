@@ -6,7 +6,7 @@ use App\Models\MyBaseModel;
 
 class Task extends MyBaseModel
 {
-    protected $table = 'tasks';
+    protected $table = 'volunteers_tasks';
 
 
     /*

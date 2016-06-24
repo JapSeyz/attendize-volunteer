@@ -12,7 +12,7 @@ class CreateTasksVolunteersTable extends Migration {
      */
     public function up()
     {
-        Schema::create('task_volunteer', function(Blueprint $table)
+        Schema::create('volunteers_task_volunteer', function(Blueprint $table)
         {
             $table->increments('id');
 
@@ -31,7 +31,7 @@ class CreateTasksVolunteersTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('task_volunteer');
+        Schema::drop('volunteers_task_volunteer');
     }
 
 }

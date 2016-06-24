@@ -27,25 +27,41 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-12">
-            <table class="table table-striped">
-                <thead>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                </thead>
+        <div class="col-xs-12">
+            <ul class="nav nav-tabs" role="tablist">
 
-                <tbody>
-                @foreach($volunteers as $volunteer)
-                    <tr>
-                        <td>{{ $volunteer->name }}</td>
-                        <td>{{ $volunteer->email }}</td>
-                        <td>{{ $volunteer->phone }}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+                <li role="presentation" class="active">
+                    <a href="#volunteers_volunteers"
+                       aria-controls="volunteers_volunteers"
+                       role="tab"
+                       data-toggle="tab">Volunteers</a>
+                </li>
+                <li role="presentation">
+                    <a href="#volunteers_tasks"
+                       aria-controls="volunteers_tasks"
+                       role="tab"
+                       data-toggle="tab">Tasks</a>
+                </li>
+                <li role="presentation">
+                    <a href="#volunteers_settings"
+                       aria-controls="volunteers_settings"
+                       role="tab"
+                       data-toggle="tab">Settings</a>
+                </li>
+
+            </ul>
         </div>
     </div>
 
+    <div class="tab-content row">
+
+        <div role="tabpanel" class="tab-pane active col-xs-12" id="volunteers_volunteers">
+            @include('volunteers::Organiser.partials.volunteers')
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_tasks">...</div>
+
+        <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_settings">...</div>
+    </div>
 @stop

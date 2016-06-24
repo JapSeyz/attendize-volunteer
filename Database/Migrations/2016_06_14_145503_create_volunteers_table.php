@@ -13,7 +13,7 @@ class CreateVolunteersTable extends Migration
      */
     public function up()
     {
-        Schema::create('volunteers', function (Blueprint $table) {
+        Schema::create('volunteers_volunteers', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('name')->index();
@@ -34,7 +34,7 @@ class CreateVolunteersTable extends Migration
             $table->text('additional_information')->nullable();
 
             // Properties
-            $table->integer('rank')->default(1); //Admin-rank
+            $table->integer('rank')->default(1); //User-rank
             $table->integer('event_id')->unsigned();
 
             $table->string('remember_token', 100)->nullable();
@@ -49,7 +49,7 @@ class CreateVolunteersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('volunteers');
+        Schema::drop('volunteers_volunteers');
     }
 
 }

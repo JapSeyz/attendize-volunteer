@@ -12,7 +12,7 @@ class CreateFoodDaysTable extends Migration {
      */
     public function up()
     {
-        Schema::create('food_days', function(Blueprint $table)
+        Schema::create('volunteers_food_days', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('day');
@@ -28,7 +28,7 @@ class CreateFoodDaysTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('food_days');
+        Schema::drop('volunteers_food_days');
     }
 
 }

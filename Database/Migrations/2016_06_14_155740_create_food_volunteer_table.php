@@ -12,7 +12,7 @@ class CreateFoodVolunteerTable extends Migration {
      */
     public function up()
     {
-        Schema::create('food_volunteer', function(Blueprint $table)
+        Schema::create('volunteers_food_volunteer', function(Blueprint $table)
         {
             $table->increments('id');
 
@@ -30,7 +30,7 @@ class CreateFoodVolunteerTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('food_volunteer');
+        Schema::drop('volunteers_food_volunteer');
     }
 
 }

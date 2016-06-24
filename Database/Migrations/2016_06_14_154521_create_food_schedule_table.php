@@ -12,7 +12,7 @@ class CreateFoodScheduleTable extends Migration {
      */
     public function up()
     {
-        Schema::create('food_times', function(Blueprint $table)
+        Schema::create('volunteers_food_times', function(Blueprint $table)
         {
             $table->increments('id');
 
@@ -30,6 +30,6 @@ class CreateFoodScheduleTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('food_times');
+        Schema::drop('volunteers_food_times');
     }
 }

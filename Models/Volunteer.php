@@ -8,7 +8,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class Volunteer extends MyBaseModel implements Authenticatable
 {
-    protected $table = 'volunteers';
+    protected $table = 'volunteers_volunteers';
 
     protected $hidden = [
         'password',

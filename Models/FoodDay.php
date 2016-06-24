@@ -6,7 +6,7 @@ use App\Models\MyBaseModel;
 
 class FoodDay extends MyBaseModel
 {
-    protected $table = 'food_days';
+    protected $table = 'volunteers_food_days';
 
 
     /*
