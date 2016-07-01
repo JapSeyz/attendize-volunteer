@@ -1,8 +1,9 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Modules\Volunteers\Models;
 
+use App\Events\Event;
 use App\Models\MyBaseModel;
 use Illuminate\Contracts\Auth\Authenticatable;
 
@@ -52,7 +53,7 @@ class Volunteer extends MyBaseModel implements Authenticatable
 
     public function tasks()
     {
-        return $this->belongsToMany(Task::class);
+        return $this->belongsToMany(Task::class, 'volunteers_task_volunteer')->withPivot('priority');
     }
 
     public function food()
@@ -71,6 +72,23 @@ class Volunteer extends MyBaseModel implements Authenticatable
         return $query->where('event_id', $event_id);
     }
 
+    /*
+     * ---------
+     * Methods
+     * ---------
+     */
+
+    public function hasTaskAtPriority($taskId, $priority)
+    {
+        if ($this->tasks->where('id', $taskId)
+            ->where('pivot.priority', $priority)
+            ->count()) {
+
+            return true;
+        }
+
+        return false;
+    }
 
 
     /*
@@ -78,6 +96,7 @@ class Volunteer extends MyBaseModel implements Authenticatable
      * Setters
      * ---------
      */
+
     /**
      * Encrypt Password On Save
      *
@@ -85,7 +104,7 @@ class Volunteer extends MyBaseModel implements Authenticatable
      */
     public function setPasswordAttribute($password)
     {
-        $this->attributes[ 'password' ] = bcrypt($password);
+        $this->attributes['password'] = bcrypt($password);
     }
 
     /**

@@ -18,10 +18,10 @@
     <section id="navigation" class="container mb0 pb0 pr0 pl0">
         <ul class="nav nav-tabs pl15 pr15">
             <li role="presentation" class="active">
-                <a role="tab" data-toggle="tab" aria-controls="register" aria-expanded="false" href="#login">Login</a>
+                <a role="tab" data-toggle="tab" aria-controls="volunteers_login" href="#volunteers_login">Login</a>
             </li>
             <li role="presentation">
-                <a role="tab" data-toggle="tab" aria-controls="register" aria-expanded="false" href="#register">Register</a>
+                <a role="tab" data-toggle="tab" aria-controls="volunteers_register" href="#volunteers_register">Register</a>
             </li>
         </ul>
     </section>

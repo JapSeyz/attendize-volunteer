@@ -60,7 +60,9 @@
         </div>
 
 
-        <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_tasks">...</div>
+        <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_tasks">
+            @include('volunteers::Organiser.partials.tasks')
+        </div>
 
         <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_settings">...</div>
     </div>

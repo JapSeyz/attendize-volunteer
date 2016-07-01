@@ -19,4 +19,14 @@ class Task extends MyBaseModel
     {
         return $this->belongsToMany(Volunteer::class);
     }
+
+    /*
+     * ---------
+     * Scopes
+     * ---------
+     */
+    public function scopeEvent($query, $event_id)
+    {
+        return $query->where('event_id', $event_id);
+    }
 }

@@ -5,15 +5,25 @@ use Illuminate\Http\Request;
 use Modules\Volunteers\Http\Requests\RegisterVolunteerRequest;
 use Modules\Volunteers\Models\Task;
 use Modules\Volunteers\Models\Volunteer;
-use Session;
 use Response;
+use Session;
 
 class VolunteersController extends MyModuleController
 {
+    protected $guard = 'volunteer';
+
     public function index()
     {
         $tasks = Task::get();
-        return view('volunteers::Attendee.index')->withTasks($tasks);
+
+        if (auth()->guard($this->guard)->check()) {
+
+            $user = auth()->guard($this->guard)->user();
+
+            return view('volunteers::Attendee.show')->withUser($user)->withTasks($tasks);
+        }
+
+        return view('volunteers::Attendee.auth')->withTasks($tasks);
     }
 
     public function login(Request $request)
@@ -21,11 +31,13 @@ class VolunteersController extends MyModuleController
         $email = $request->email;
         $password = $request->password;
 
-        if(\Auth::guard('volunteer')->attempt(['email' => $email, 'password' => $password])){
-            dd(auth()->guard('volunteer')->user());
+        if (\Auth::guard($this->guard)->attempt(['email' => $email, 'password' => $password])) {
+            Session()->set('message', 'Successfully logged in');
+        } else {
+            Session()->set('message', 'The User was not found');
         }
 
-        dd('not found');
+        return redirect()->back();
     }
 
     public function register(RegisterVolunteerRequest $request)
@@ -34,20 +46,22 @@ class VolunteersController extends MyModuleController
         $inputs['event_id'] = $this->event->id;
 
         // Ensure that different priorities have been selected
-        for($i = 2; $i < 4; $i++){
-            if($inputs['priority1'] == ($inputs['priority'.$i])){
+        for ($i = 2; $i < 4; $i++) {
+            if ($inputs['priority1'] == ($inputs['priority' . $i])) {
 
                 // Duplicate priority set
                 return Response::json([
-                    'status' => 422,
-                    'priority'.$i => ['The Priorities have to be unique']
+                    'status'        => 422,
+                    'priority' . $i => ['The Priorities have to be unique']
                 ], 422);
             }
         }
 
         $volunteer = Volunteer::create($inputs);
 
-        dd($volunteer);
+        Session()->set('message', 'Your account has been created');
+
+        return redirect()->back();
     }
 
 }
