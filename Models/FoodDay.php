@@ -19,4 +19,14 @@ class FoodDay extends MyBaseModel
     {
         return $this->hasMany(FoodTime::class, 'day_id');
     }
+
+    /*
+    * ---------
+    * Scopes
+    * ---------
+    */
+    public function scopeEvent($query, $event_id)
+    {
+        return $query->where('event_id', $event_id);
+    }
 }

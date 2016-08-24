@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace Modules\Volunteers\Models;
 
-use App\Events\Event;
 use App\Models\MyBaseModel;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 class Volunteer extends MyBaseModel implements Authenticatable
@@ -82,7 +82,8 @@ class Volunteer extends MyBaseModel implements Authenticatable
     {
         if ($this->tasks->where('id', $taskId)
             ->where('pivot.priority', $priority)
-            ->count()) {
+            ->count()
+        ) {
 
             return true;
         }
@@ -105,6 +106,17 @@ class Volunteer extends MyBaseModel implements Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function setBirthdayAttribute($birthday)
+    {
+        $this->attributes['birthday'] = Carbon::parse($birthday)->format('Y-m-d');
+    }
+
+
+    public function getBirthdayAttribute($birthday)
+    {
+        return Carbon::parse($birthday)->format('d-m-Y');
     }
 
     /**

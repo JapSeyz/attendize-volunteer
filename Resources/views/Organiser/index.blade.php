@@ -36,17 +36,19 @@
                        role="tab"
                        data-toggle="tab">Volunteers</a>
                 </li>
-                <li role="presentation">
-                    <a href="#volunteers_tasks"
-                       aria-controls="volunteers_tasks"
-                       role="tab"
-                       data-toggle="tab">Tasks</a>
-                </li>
+
                 <li role="presentation">
                     <a href="#volunteers_settings"
                        aria-controls="volunteers_settings"
                        role="tab"
                        data-toggle="tab">Settings</a>
+                </li>
+
+                <li role="presentation">
+                    <a href="#volunteers_data"
+                       aria-controls="volunteers_data"
+                       role="tab"
+                       data-toggle="tab">Data</a>
                 </li>
 
             </ul>
@@ -59,11 +61,10 @@
             @include('volunteers::Organiser.partials.volunteers')
         </div>
 
-
-        <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_tasks">
-            @include('volunteers::Organiser.partials.tasks')
+        <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_settings">
+            @include('volunteers::Organiser.partials.settings')
         </div>
 
-        <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_settings">...</div>
+        <div role="tabpanel" class="tab-pane col-xs-12" id="volunteers_data">Export Foodplan etc.</div>
     </div>
 @stop

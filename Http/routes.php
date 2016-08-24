@@ -12,6 +12,7 @@ Route::group([
     'namespace'  => 'Modules\Volunteers\Http\Controllers\Organiser'
 ], function () {
     Route::get('/', 'VolunteersController@index');
+    Route::post('update/tasks', 'VolunteersController@updateTasks');
 });
 
 
@@ -26,11 +27,27 @@ Route::group([
     'prefix'     => 'm/{event_id}/volunteers',
     'namespace'  => 'Modules\Volunteers\Http\Controllers\Attendee'
 ], function () {
-    Route::get('/', 'VolunteersController@index');
+    Route::get('/', [
+        'as' => 'volunteers.login',
+        'uses' => 'VolunteersController@index',
+    ]);
 
-    /* Register Form */
+    /*
+     * ---------
+     * Auth
+     * ---------
+     */
     Route::post('register', 'VolunteersController@register');
     Route::post('login', 'VolunteersController@login');
+    Route::get('logout', 'VolunteersController@logout');
+
+    /*
+     * ---------
+     * Profile
+     * ---------
+     */
+    Route::post('update', 'VolunteersController@update');
+    Route::post('update/password', 'VolunteersController@updatePassword');
 
 });
 

@@ -1,16 +1,7 @@
-<form class="row ajax" method="post" action="{{ $url }}/update">
-    {{ csrf_field() }}
+<form class="row ajax" method="post" action="{{$url}}/update/password">
 
-    {{-- Name --}}
-    <div class="col-xs-12 col-md-6 form-group">
-        <label for="name" class="form-control-label required">Name</label>
-        <input type="text" name="name" class="form-control" required value="{{ $user->name }}">
-    </div>
-
-    {{-- Email --}}
-    <div class="col-xs-12 col-md-6 form-group">
-        <label for="email" class="form-control-label required">Email</label>
-        <input type="text" name="email" class="form-control" disabled required value="{{ $user->email }}">
+    <div class="col-xs-12">
+        <h2 class="text-center">Update Password</h2>
     </div>
 
     {{-- Password --}}
@@ -23,6 +14,29 @@
     <div class="col-xs-12 col-md-6 form-group">
         <label for="password_confirmation" class="form-control-label">Password Confirmation</label>
         <input type="password" name="password_confirmation" class="form-control" required>
+    </div>
+    <div class="col-xs-12">
+        <input type="submit" class="btn btn-success pull-right" value="Update">
+    </div>
+</form>
+
+<form class="row ajax mt15" method="post" action="{{ $url }}/update">
+
+    <div class="col-xs-12">
+        <h2 class="text-center">Update Profile</h2>
+    </div>
+    {{ csrf_field() }}
+
+    {{-- Name --}}
+    <div class="col-xs-12 col-md-6 form-group">
+        <label for="name" class="form-control-label required">Name</label>
+        <input type="text" name="name" class="form-control" required value="{{ $user->name }}">
+    </div>
+
+    {{-- Email --}}
+    <div class="col-xs-12 col-md-6 form-group">
+        <label for="email" class="form-control-label required">Email</label>
+        <input type="text" name="email" class="form-control" disabled required value="{{ $user->email }}">
     </div>
 
     {{-- Address --}}
@@ -73,15 +87,27 @@
     </div>
 
     {{-- Extra Events --}}
-    <div class="col-xs-12 form-group">
-        <label for="additional_information" class="form-control-label">Previous tasks</label>
-        <textarea name="additional_information" class="form-control">{{ $user->previous_tasks }}</textarea>
+    <div class="col-xs-12 col-md-6 form-group">
+        <label for="extra_events" class="form-control-label">Extra events (parties, etc.)</label>
+
+        <input type="hidden" name="extra_events" value="0" class="form-control">
+        @if($user->extra_events == 1)
+            <input type="checkbox" name="extra_events" class="form-control" value="1" checked>
+        @else
+            <input type="checkbox" name="extra_events" value="1" class="form-control">
+        @endif
     </div>
 
     {{-- Newsletter --}}
-    <div class="col-xs-12 form-group">
-        <label for="additional_information" class="form-control-label">Previous tasks</label>
-        <textarea name="additional_information" class="form-control">{{ $user->previous_tasks }}</textarea>
+    <div class="col-xs-12 col-md-6 form-group">
+        <label for="newsletter" class="form-control-label">Newsletter</label>
+
+        <input type="hidden" name="newsletter" value="0" class="form-control">
+        @if($user->newsletter == 1)
+            <input type="checkbox" name="newsletter" class="form-control" value="1" checked>
+        @else
+            <input type="checkbox" name="newsletter" value="1" class="form-control">
+        @endif
     </div>
 
     {{-- Tasks --}}
@@ -106,5 +132,6 @@
     @endfor
 
     <div class="col-xs-12">
-        <input class="btn btn-success" type="submit" value="Join">
+        <input class="btn btn-success pull-right" type="submit" value="Update">
     </div>
+</form>

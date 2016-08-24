@@ -8,6 +8,9 @@ class Task extends MyBaseModel
 {
     protected $table = 'volunteers_tasks';
 
+    protected $fillable = [
+        'name'
+    ];
 
     /*
      * ---------

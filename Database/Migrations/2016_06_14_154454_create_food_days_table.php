@@ -16,6 +16,7 @@ class CreateFoodDaysTable extends Migration {
         {
             $table->increments('id');
             $table->string('day');
+            $table->integer('event_id')->unsigned()->index();
 
             $table->timestamps();
         });
